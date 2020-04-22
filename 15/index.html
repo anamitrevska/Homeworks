@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework15</title>
+</head>
+
+<body>
+    <h1>My Shopping List</h1>
+    <div>
+        <label for="">Enter a new item:</label>
+        <input type="text">
+        <button>Add Item</button>
+    </div>
+    <ul></ul>
+</body>
+
+<script>
+    var input_text = document.querySelector("input");
+    var insert_list = document.querySelector("ul");
+    var btn_variable = document.querySelector("button");
+    btn_variable.addEventListener("click", addItems);
+
+    function addItems() {
+        var inserted_item = input_text.value;
+        console.log(inserted_item);
+        document.querySelector("input").value = "";
+        var create_div = document.createElement("div");
+        
+        var create_li = document.createElement("li");
+        var create_btn = document.createElement("button");
+        create_div.style.display = "flex";
+        create_li.style.padding = "5px"
+        create_li.textContent = inserted_item;
+        create_btn.innerHTML = "delete";
+        insert_list.appendChild(create_div);
+        create_div.appendChild(create_li)
+        create_div.appendChild(create_btn);
+
+        create_btn.onclick = function() {
+            create_div.remove();
+        }
+    }
+
+
+</script>
+
+</html>
