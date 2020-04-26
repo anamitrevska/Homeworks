@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework17_02</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+        integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+    <div class="container">
+
+
+        <div class="m-3 col-5 mx-auto">
+            <h1 class="text-center">Favourite fruits</h1>
+            <label for="input_fruits">Please type your favourite fruits separeted by comma:</label>
+            <input type="text" id="input_fruits" class="form-control">
+            <small class="form-text text-muted">You can type fruits only from this list:</small>
+            <small class="form-text text-muted">apples, pears, oranges, pineapples,kiwis, bannanas, berries,
+                watermelons, lemons</small>
+            <small id="not_allowed_text"></small>
+            <button class="btn btn-primary btn-block mt-2">Add fruits</button>
+        </div>
+        <div id="wrapper"></div>
+    </div>
+
+</body>
+
+<script>
+    var btn = document.querySelector("button");
+    btn.addEventListener("click", createList);
+
+    function createList() {
+        var allowed_items = ["apples", "pears", "oranges", "pineapples", "kiwis", "bannanas", "berries", "watermelons", "lemons"];
+        var not_allowed_items = "";
+        var input_text = document.querySelector("input").value;
+        var input_array = input_text.split(",");
+        var class_input = "form-control is-valid";
+        document.querySelector("input").className = class_input;
+        for (var i = 0; i < input_array.length; i++) {
+            if (allowed_items.indexOf(input_array[i].trim()) !== -1) {
+                var wrapper = document.querySelector("#wrapper");
+                var div1 = document.createElement("div");
+                var span1 = document.createElement("span")
+                var btn = document.createElement("button");
+                div1.className = "border row justify-content-between p-2"
+                span1.textContent = input_array[i].trim();
+                btn.textContent = "Delete";
+                btn.className = "btn btn-danger";
+                wrapper.appendChild(div1);
+                div1.appendChild(span1);
+                div1.appendChild(btn);
+                btn.onclick = function (event) {
+                    event.currentTarget.parentNode.remove();
+                }
+
+            } else {
+                not_allowed_items += input_array[i].trim() + " ";
+                var small = document.querySelector("#not_allowed_text");
+                small.textContent = "We can't add \"" + not_allowed_items.trim() + "\". It is not in our fruit list."
+                small.className = "text-danger"
+                var replace_class = class_input.replace("is-valid", "is-invalid");
+                document.querySelector("input").className = replace_class;
+
+            }
+
+
+        }
+        console.log(input_text);
+        console.log(input_array);
+        console.log(not_allowed_items);
+
+    }
+
+</script>
+
+</html>
