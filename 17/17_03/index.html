@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework_17_03</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+        integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="m-3 col-5 mx-auto">
+            <label for="input_camelcase">Enter camelCase</label>
+            <input type="text" class="form-control" id="input_camelcase">
+            <button class="btn btn-primary btn-block mt-2 mb-2">Submit text</button>
+            <p id="title_case"></p>
+
+        </div>
+    </div>
+
+    <script>
+        var btn = document.querySelector("button");
+        btn.addEventListener("click", titleCase);
+
+        function titleCase() {
+            var camelCaseText = document.querySelector("input").value;
+            var split_array = camelCaseText.split(" ");
+            var new_array = [];
+            var new_element = "";
+            for (let i = 0; i < split_array.length; i++) {
+                new_element = split_array[i].replace(/[A-Z]+/g, ' $&').toLowerCase().trim();
+
+                new_array.push(new_element);
+            }
+
+            var new_string = new_array.join(" ");
+            var new_array1 = new_string.split(" ");
+            var new_array2 = [];
+            for (let i = 0; i < new_array1.length; i++) {
+                var capital_leter = new_array1[i];
+                var new_word = capital_leter[0].toUpperCase() + capital_leter.slice(1);
+
+                new_array2.push(new_word);
+            }
+
+            console.log(new_array2.join(" "));
+
+            var para = document.querySelector("p");
+            para.textContent = new_array2.join(" ");
+
+
+        }
+
+    </script>
+</body>
+
+</html>
