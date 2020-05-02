@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework_18_01</title>
+</head>
+
+<body>
+    <script>
+/*******************************************************************************************************************
+Javascript Date object practice
+*******************************************************************************************************************/
+        var d = new Date();
+
+    //1) Write a JavaScript function currentDate(separator) to get the current date, date separator is passed as function parameter, if not passed return default ("/")
+
+        function currentDate(separator) {
+
+            if (separator === undefined) {
+
+                separator = "/";
+            }
+
+            console.log(d.getDate() + separator + (d.getMonth() + 1) + separator + d.getFullYear())
+        }
+
+    //2) Write a JavaScript getDaysInMonth() function to get the number of days in a month.
+
+        function getDaysInMonth(month, year) {
+
+            return new Date(year, month, 0).getDate();
+
+        }
+
+    // 3) Write a JavaScript function to get the month name from a particular date
+
+        function month_name(particular_date) {
+
+            const monthNames = ["January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"];
+
+            console.log(particular_date);
+
+            var month = particular_date.split("/");
+
+            console.log(month);
+
+            return (monthNames[month[0] - 1]);
+
+        }
+    // 4) Write a JavaScript function isWeekend() to test whether a date is a weekend.
+
+        function isWeekend(date) {
+
+            const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+            var month = monthNames.indexOf(date.slice(0, 3));
+
+            var day = date.slice(4, 6);
+
+            var year = date.slice(8);
+
+            var date1 = new Date(year, month, day).getDay();
+
+            if (date1 === 6 || date1 === 0) {
+
+                console.log("It's WEEKEND");
+
+            } else {
+
+                console.log("It's not WEEKEND");
+            }
+        }
+
+     // 5) Write a JavaScript date_diff_indays() function to get difference between two dates in days.
+
+        function date_diff_indays(date1, date2) {
+
+            var date1_array = date1.split("/");
+            var date2_array = date2.split("/");
+            var d1 = new Date(date1_array[2], date1_array[1], date1_array[0]).getTime();
+            var d2 = new Date(date2_array[2], date2_array[1], date2_array[0]).getTime();
+            console.log(d1, d2);
+
+            if (d1 > d2) {
+
+                return Math.floor((d1 - d2) / 1000 / 60 / 60 / 24);
+
+            } else {
+
+                return Math.floor((d2 - d1) / 1000 / 60 / 60 / 24);
+
+            }
+        }
+    //6) Write a JavaScript function lastday() to get the last day of a month. (Used the same function as in 2)
+
+        function lastday(year,month){
+
+            return new Date(year,month,0).getDay;
+
+        }
+
+    // 7) Write a JavaScript function to get the maximum date from an array of dates.
+
+        function maxDate (dates){
+
+        // var dates = ["1/1/2020", "10/4/2020", "7/5/2019", "1/6/2020", "31/8/2020", "9/9/2020", "12/12/2021", "15/10/2019"];
+
+        var date_time =[];
+
+        for (let i = 0; i < dates.length; i++) {
+            
+            var dates_array=dates[i].split("/");
+
+            var d=new Date(dates_array[2], dates_array[1], dates_array[0]).getTime();
+
+            date_time.push(d);
+            
+        }
+        console.log(date_time);
+
+        return max_date=dates[date_time.indexOf(Math.max.apply(Math,date_time))];
+        
+    }
+
+
+
+
+/*******************************************************************************************************************
+Javascript callback function practice
+*******************************************************************************************************************/
+
+    function myMap(myArray,callback){
+        callback(myArray);
+    }
+
+    function callback(array){
+        var increment_array=[];
+        var double_array=[];
+        var squere_array=[];
+        for (let i = 0; i < array.length; i++) {
+
+             increment_array[i] = array[i]+1;
+             double_array[i]=array[i] + array[i];
+             squere_array[i]=array[i] * array[i];
+
+            
+        }
+        console.log(increment_array);
+        console.log(double_array);
+        console.log(double_array);
+    }
+
+
+    </script>
+</body>
+
+</html>
