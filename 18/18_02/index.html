@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework_18_02</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <div class="jumbotron-fluid  m-0 wrapper">
+        <img src="https://images.unsplash.com/photo-1467810563316-b5476525c0f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1349&q=80"
+            width="100%">
+
+        <div class="countdown_wrapper">
+            <h1>New Year Countdown</h1>
+
+            <div id="loader">
+                <div class="d-flex justify-content-center">
+                    <div class="spinner-border" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" style="display: none;" id="myDiv">
+                <div class="m-2">
+                    <div class="days"></div>
+                    <p>days</p>
+                </div>
+                <div class="m-2">
+                    <div class="hours"></div>
+                    <p>hours</p>
+                </div>
+                <div class="m-2">
+                    <div class="minutes"></div>
+                    <p>minutes</p>
+                </div>
+                <div class="m-2">
+                    <div class="seconds"></div>
+                    <p>seconds</p>
+                </div>
+            </div>
+            <div class="new_year" style="display: none;" id="new_year"></div>
+
+        </div>
+
+
+    </div>
+    </div>
+
+    <script>
+
+        var myVar1 = setTimeout(showLoader, 3000);
+
+        function showLoader() {
+            document.getElementById("loader").style.display = "none";
+            document.getElementById("myDiv").style.display = "flex";
+            document.getElementById("new_year").style.display = "initial";
+
+        }
+
+        var myVar = setInterval(newYear_countdown, 1000);
+
+        function newYear_countdown() {
+
+            var currentYear = new Date().getFullYear();
+            var current_time = new Date().getTime();
+            var nextNewYear = new Date('January 01 ' + (currentYear + 1) + ' 00:00:00').getTime();
+            var hours = 23 - new Date().getHours();
+            if (hours < 10) { hours = "0" + hours }
+            var minutes = 59 - new Date().getMinutes();
+            if (minutes < 10) { minutes = "0" + minutes }
+            var seconds = 59 - new Date().getSeconds();
+            if (seconds < 10) { seconds = "0" + seconds }
+            var diff = nextNewYear - current_time;
+            var days = Math.floor(diff / 1000 / 60 / 60 / 24);
+            console.log(nextNewYear);
+            console.log(days + " " + hours + " " + minutes + " " + seconds);
+            var div_days = document.querySelector(".days");
+            var div_hours = document.querySelector(".hours");
+            var div_minutes = document.querySelector(".minutes");
+            var div_seconds = document.querySelector(".seconds");
+            var div_newyear = document.querySelector(".new_year")
+            div_days.innerHTML = days;
+            div_hours.innerHTML = hours;
+            div_minutes.innerHTML = minutes;
+            div_seconds.innerHTML = seconds;
+            div_newyear.innerHTML = currentYear + 1;
+
+
+
+
+        }
+
+
+    </script>
+</body>
+
+</html>
