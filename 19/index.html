@@ -11,7 +11,8 @@
 </head>
 
 <body>
-    <div class="container header col-6">
+  
+    <div class="container header">
         <img src="https://upload.wikimedia.org/wikipedia/en/c/c4/Super_Hero_Squad_Show.jpg">
         <div class="title">
             <h1 id="squadName"></h1>
@@ -22,7 +23,9 @@
             <h6 id="formed"></h6>
         </div>
     </div>
-    <div class="container col-6 mt-4 d-flex" id="members_wrapper"></div>
+    <div class="container mt-4" >
+        <div class="row justify-content-around" id="members_wrapper"></div>
+    </div>
 
 </body>
 
@@ -61,7 +64,7 @@
                 }
 
                 members_wrapper.innerHTML += `
-                <div class="card mr-2" style="width: 18rem;">
+                <div class="card mt-3 col-sm-3">
                     <img src="${additional_data[i].imgUrl}" class="card-img-top">
                     <div class="card-body">
                         <h5 class="card-title">${member.name}</h5>
