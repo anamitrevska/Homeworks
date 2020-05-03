@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <div class="container header col-6">
+        <img src="https://upload.wikimedia.org/wikipedia/en/c/c4/Super_Hero_Squad_Show.jpg">
+        <div class="title">
+            <h1 id="squadName"></h1>
+            <h6 id="homeTown"></h6>
+        </div>
+        <div class="subtitle">
+            <h4 id="secretBase"></h4>
+            <h6 id="formed"></h6>
+        </div>
+    </div>
+    <div class="container col-6 mt-4 d-flex" id="members_wrapper"></div>
+
+</body>
+
+<script>
+    const url = 'https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json';
+    fetch(url).then(
+        response => {
+            return response.json();
+        }).then(data => {
+            document.getElementById("squadName").innerText = data.squadName;
+            document.getElementById("homeTown").innerText = data.homeTown;
+            document.getElementById("secretBase").innerText = data.secretBase;
+            document.getElementById("formed").innerText = data.formed;
+
+            var members_wrapper = document.getElementById("members_wrapper");
+
+            var additional_data = [
+                { name: "Molecule Man", imgUrl: "https://upload.wikimedia.org/wikipedia/en/thumb/5/5f/Molecule_Man.jpg/250px-Molecule_Man.jpg", readMoreUrl: "https://en.wikipedia.org/wiki/Molecule_Man" },
+                { name: "Madame Uppercut", imgUrl: "https://upload.wikimedia.org/wikipedia/en/thumb/b/be/Madame-Web.png/250px-Madame-Web.png", readMoreUrl: "https://en.wikipedia.org/wiki/Madame_Web" },
+                { name: "Eternal Flame", imgUrl: "https://vignette.wikia.nocookie.net/marvel-cinematic-universe/images/7/7b/Eternal_Flame.png", readMoreUrl: "https://marvelcinematicdatabase.fandom.com/wiki/Eternal_Flame" }
+            ];
+
+            for (let i = 0; i < data.members.length; i++) {
+                var member = data.members[i];
+
+                var powers = "";
+
+                var powers_element=calculateStrenght(member.powers);
+
+                for (let j = 0; j < member.powers.length; j++) {
+
+                    var power = member.powers[j];
+
+                    powers += `<li class="list-group-item">${power}</li>`;
+
+                }
+
+                members_wrapper.innerHTML += `
+                <div class="card mr-2" style="width: 18rem;">
+                    <img src="${additional_data[i].imgUrl}" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">${member.name}</h5>
+                        <div>
+                            <p>Strenght</p>
+                            <div class="progress" style="height: 2px;">
+                                <div class="progress-bar ${powers_element.color}" role="progressbar" style="width: ${powers_element.strength}%;" aria-valuenow="${powers_element.strength}"
+                                    aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <p class="mt-2">Age: ${member.age}</p>
+                        <p>Secret identity: ${member.secretIdentity}</p>
+                        <p><strong>Powers:</strong></p>
+                        <ul class="list-group list-group-flush">${powers}</ul>
+                       <a href="${additional_data[i].readMoreUrl}" target="_blank"> <button class="btn btn-outline-primary btn-block mt-2">Read More</button> </a>
+                    </div>
+                </div>
+                `;
+            }
+
+
+
+        });
+
+        function calculateStrenght(powers){
+
+            var num_powers=powers.length;
+            if(num_powers<2){
+                return {
+                    "strength":"60",
+                    "color":"bg-success"
+                };
+            } else if (num_powers>=2 && num_powers<=4){
+                return {
+                    "strength":"80",
+                    "color":"bg-warning"
+                };
+
+            } else if (num_powers>4){
+                return {
+
+                    "strength":"100",
+                    "color":"bg-danger"
+
+                };
+            }
+}
+
+</script>
+
+</html>
