@@ -39,9 +39,8 @@ function makeSelect()
 {
 
     if (!is_array(MONTHS)) {
-
-        echo "Error message: Nor an array";
-        die();
+        
+        die("The variable used for options is not an array");
     }
 
     echo '<select name="months">';
