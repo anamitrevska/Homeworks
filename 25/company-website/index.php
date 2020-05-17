@@ -1,4 +1,6 @@
 <?php
+ $setfooter = true;
+ $title_name='Bootstrap | Home';
  if (isset($_GET['page'])) {
 $title_name='Bootstrap | ' .ucfirst($_GET['page']);
  }
@@ -48,6 +50,8 @@ $title_name='Bootstrap | ' .ucfirst($_GET['page']);
 
     <?php
 
+    // var_dump($_POST['username']);
+
     if (isset($_GET['page'])) {
 
         switch ($_GET['page']) {
@@ -76,7 +80,16 @@ $title_name='Bootstrap | ' .ucfirst($_GET['page']);
             $title_name='BootsApp | Home';
             $setfooter = true;
         }
+    } 
+
+    if (isset($_POST['username'])) {
+
+        setcookie("username",$_POST['username']);
+        header("Location: index.php?page=about");
+        exit();
+
     }
+
 
     if ($setfooter) {
 
