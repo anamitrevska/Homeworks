@@ -1,6 +1,6 @@
 <?php
 
-namespace anamitrevska\Select{
+namespace anamitrevska\Select;
     class HtmlSelect extends ASelect{
 
         public function makeSelect($array)
@@ -10,6 +10,6 @@ namespace anamitrevska\Select{
             echo '</select>';
         }
     }
-}
+
 
 ?>

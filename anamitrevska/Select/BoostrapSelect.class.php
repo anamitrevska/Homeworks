@@ -1,5 +1,5 @@
 <?php
-namespace anamitrevska\Select{
+namespace anamitrevska\Select;
 
     class BoostrapSelect extends ASelect{
         const BOOTSTRAP_FORM_CLASS="form-group";
@@ -19,7 +19,6 @@ namespace anamitrevska\Select{
         }
     }
 
-    }
 
 
 ?>

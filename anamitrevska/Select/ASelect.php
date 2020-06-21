@@ -1,6 +1,6 @@
 <?php
 
-namespace anamitrevska\Select{
+namespace anamitrevska\Select;
 
     abstract class ASelect{
 
@@ -34,5 +34,4 @@ namespace anamitrevska\Select{
 
     }
 
-}
 ?>
