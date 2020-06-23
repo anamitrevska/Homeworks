@@ -1,0 +1,66 @@
+.headerDiv{
+    background-color: rgba(94, 8, 192, 0.836);
+    display: flex;
+}
+
+.headerDiv p {
+text-align: right;
+}
+
+#h_div1 {
+float: left;   
+ width: 30%;
+ padding-left: 10px;
+ padding-top: 50px;
+ font-size: 20px;
+
+}
+
+#tableDiv{
+    height: 178px;
+}
+
+#h_div2{
+    float: right;
+    width: 30%;
+    padding-right: 20px;
+
+}
+
+td,th {
+    text-align: left;
+}
+
+
+.detailDiv{
+    display: flex;
+    /* height: 100px; */
+}
+
+
+#noteDiv{
+float: left;
+    background-color: azure;
+    width: 60%;
+    height: 178px;
+}
+
+#totalAmount{
+    background-color:rgba(94, 8, 192, 0.836); 
+    display: flex;
+    width: 40%;
+    float: right;
+    height: 178px;
+    text-align: right;
+}
+#totalAmount div{
+    margin-right: 20px;
+    margin-top: 40px;
+}
+#noteDiv p{
+padding: 20px;
+padding-top: 40px;}
+
+#tableDiv{
+   margin: 30px;
+}
